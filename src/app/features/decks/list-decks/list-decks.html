@@ -1,0 +1,45 @@
+<section>
+  <!-- PAGE HEADER -->
+  <app-page-header
+    [icon]="'layers'"
+    [title]="'Decks'"
+    [description]="'Gerencie seus decks de estudo, crie novos e organize-os de acordo com suas necessidades.'"
+  />
+
+  <!-- PAGE CTA TO CREATE A NEW DECK, AND SEARCH BAR -->
+  <div class="content-header">
+    <button
+      pButton
+      size="large"
+      severity="help"
+      class="rememo-primary-gradient-button"
+      routerLink="/decks/new"
+    >
+      <span class="material-symbols-rounded">add</span>Novo Deck
+    </button>
+  </div>
+
+  <div class="search-bar">
+    <p-inputgroup class="w-full">
+      <p-inputgroup-addon>
+        <span class="material-symbols-rounded">search</span>
+      </p-inputgroup-addon>
+
+      <input pInputText type="text" pSize="large" placeholder="Pesquisar decks..." class="w-full" />
+    </p-inputgroup>
+  </div>
+
+  <!-- DECKS LIST -->
+  <div>
+    <div class="cards-section-header">
+      <h4>Todos os decks</h4>
+      <span>{{ decks.length }} decks</span>
+    </div>
+    <div class="flex justify-space-between flex-wrap gap-4">
+      @for (deck of decks; track deck.uuid) {
+        <app-page-deck-card [deck]="deck" />
+      }
+    </div>
+  </div>
+</section>
+<router-outlet />

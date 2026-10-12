@@ -1,0 +1,29 @@
+.card-header {
+  padding: 1rem;
+}
+
+.card-header button {
+  background: #f5efff;
+  color: var(--rememo-primary);
+  border: none;
+}
+
+.card-header h3 {
+  margin-top: 0.8rem;
+  color: var(--rememo-text);
+}
+
+.card-header p {
+  color: var(--rememo-text-secondary);
+  font-size: 0.875rem;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer button span {
+  color: var(--rememo-primary);
+}

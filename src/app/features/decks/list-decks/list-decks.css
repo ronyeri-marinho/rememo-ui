@@ -1,0 +1,29 @@
+.content-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.search-bar {
+  margin-bottom: 1rem;
+}
+
+.cards-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.cards-section-header h4 {
+  color: var(--rememo-text);
+  font-weight: 600;
+}
+
+.cards-section-header span {
+  color: var(--rememo-text-secondary);
+  font-size: 1rem;
+}

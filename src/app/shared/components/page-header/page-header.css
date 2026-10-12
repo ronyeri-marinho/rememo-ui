@@ -1,0 +1,25 @@
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h1 span.material-symbols-rounded {
+  font-size: 2.5rem;
+  vertical-align: middle;
+}
+
+h1 div.page-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page-header-icon {
+  background-color: var(--rememo-primary);
+}
+
+.paragraph-description {
+  font-size: 0.9rem;
+  color: var(--rememo-text-secondary);
+  margin-bottom: 1.5rem;
+}

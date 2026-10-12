@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+
+:root {
+  /* Identidade visual */
+  --rememo-primary: #6d4aff;
+  --rememo-primary-dark: #5535d9;
+  --rememo-primary-light: #eee9ff;
+
+  /* Superfícies */
+  --rememo-background: #faf9fc;
+  --rememo-surface: #ffffff;
+  --rememo-border: #e7e5ea;
+
+  /* Tipografia */
+  --rememo-text: #3f4041;
+  --rememo-text-secondary: #737982;
+
+  /* Estados */
+  --rememo-success: #22a06b;
+  --rememo-error: #d64545;
+  --rememo-warning: #d99a00;
+
+  --p-inputtext-focus-border-color: var(--rememo-primary);
+  --p-textarea-focus-border-color: var(--rememo-primary);
+}
+
+html,
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+p-sidebar-main {
+  color: var(--rememo-text);
+  background-color: var(--rememo-background);
+  padding: 20px 20px;
+}
+
+.rememo-primary-gradient-button {
+  /*background: linear-gradient(135deg, #6d4aff 0%, #5535d9 50%, #a855f7 100%) !important;*/
+  background: var(--rememo-primary);
+
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 10px;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s ease;
+}
+
+.rememo-primary-gradient-button:hover {
+  filter: brightness(1.08);
+}
+
+.rememo-primary-gradient-button:active {
+  transform: scale(0.98);
+}

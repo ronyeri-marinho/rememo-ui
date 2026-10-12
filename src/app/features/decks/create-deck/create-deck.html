@@ -1,0 +1,121 @@
+<section>
+  <!-- PAGE HEADER -->
+  <app-page-header
+    [icon]="'layers'"
+    [title]="'Novo Deck'"
+    [description]="'Crie um espaço para organizar seus estudos, adicionando cards e revisando-os de forma eficiente.'"
+  />
+
+  <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 mt-6">
+    <div>
+      <p-card>
+        <div class="create-deck-form-header flex items-center gap-2 mb-4">
+          <span class="material-symbols-rounded create-deck-info-icon">edit_note</span>
+          <h3 class="text-lg font-medium">Informações do Deck</h3>
+        </div>
+        <form [formGroup]="createDeckForm">
+          <div class="flex flex-col gap-2">
+            <label pLabel for="name" class="font-bold"
+              >Nome do Deck <span class="text-red-500">*</span></label
+            >
+            <input
+              pInputText
+              id="name"
+              formControlName="name"
+              maxlength="255"
+              pSize="large"
+              placeholder="Ex. Sistemas Distribuídos"
+              [invalid]="nameControl?.invalid && nameControl.touched"
+            />
+            <small id="deck-name-help" class="text-sm input-help-text"
+              >O nome é obrigatório e deve conter até 255 caracteres.</small
+            >
+          </div>
+          <div class="flex flex-col gap-2 mt-4">
+            <label pLabel class="font-bold" for="description">Descrição</label>
+            <textarea
+              pTextarea
+              id="description"
+              formControlName="description"
+              aria-describedby="deck-name-help"
+              maxlength="500"
+              pSize="large"
+              placeholder="Sobre o que você vai estudar neste deck..."
+            ></textarea>
+            <small id="deck-description-help" class="text-sm input-help-text"
+              >Opcional. Máximo de 500 caracteres.</small
+            >
+          </div>
+          <div class="flex justify-end mt-4">
+            <button
+              pButton
+              type="submit"
+              size="large"
+              severity="help"
+              class="create-deck-button w-full mb-12"
+              aria-describedby="deck-description-help"
+              [disabled]="createDeckForm.invalid"
+              (click)="createDeck()"
+            >
+              <span class="material-symbols-rounded">add</span> Criar Deck
+            </button>
+          </div>
+        </form>
+      </p-card>
+    </div>
+
+    <div>
+      <div class="flex h-full flex-col gap-6 rounded-2xl bg-violet-50 p-6 lg:p-8">
+        <div class="flex justify-center pt-2">
+          <div
+            class="flex h-20 w-20 items-center justify-center rounded-2xl border border-violet-100 bg-white shadow-sm"
+          >
+            <span class="material-symbols-rounded text-4xl text-violet-600">layers</span>
+          </div>
+        </div>
+
+        <div class="space-y-2 text-center">
+          <h2 class="text-xl font-semibold text-violet-950">Seu próximo passo começa aqui</h2>
+
+          <p class="text-sm leading-relaxed text-violet-800/80">
+            Crie um deck para reunir conceitos, perguntas e respostas.
+          </p>
+        </div>
+
+        <div class="border-t border-violet-200"></div>
+
+        <div class="flex items-start gap-3">
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm"
+          >
+            <span class="material-symbols-rounded text-xl text-violet-600">check_circle</span>
+          </div>
+
+          <div class="space-y-1">
+            <h3 class="text-sm font-semibold text-violet-950">Organize por assunto</h3>
+
+            <p class="text-sm leading-relaxed text-violet-800/80">
+              Separe seus temas de estudo em decks diferentes.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <div
+            class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm"
+          >
+            <span class="material-symbols-rounded text-xl text-violet-600">lightbulb</span>
+          </div>
+
+          <div class="space-y-1">
+            <h3 class="text-sm font-semibold text-violet-950">Aprenda com revisões</h3>
+
+            <p class="text-sm leading-relaxed text-violet-800/80">
+              Use flashcards para reforçar o conteúdo e memorizar conceitos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,71 @@
+<div class="border-surface-200 dark:border-surface-700 overflow-hidden">
+  <p-sidebar-layout class="relative!">
+    @if (isMobile()) {
+      <p-sidebar-backdrop class="absolute!" />
+    }
+    <p-sidebar
+      id="mobile-nav"
+      [collapsible]="isMobile() ? 'offcanvas' : 'icon'"
+      [overlay]="isMobile()"
+      [open]="!isMobile()"
+      width="14rem"
+    >
+      <p-sidebar-spacer />
+      <p-sidebar-aside>
+        <p-sidebar-panel>
+          <p-sidebar-header>
+            <p-sidebar-menu>
+              <p-sidebar-menu-item>
+                <button pSidebarMenuButton class="p-1!" [routerLink]="'/'">
+                  <div>
+                    <img src="rememo-logo.png" alt="Rememo Logo" height="30" width="30" />
+                  </div>
+                  <span>Rememo</span>
+                </button>
+              </p-sidebar-menu-item>
+            </p-sidebar-menu>
+          </p-sidebar-header>
+          <p-sidebar-content>
+            <p-sidebar-group>
+              @for (navGroup of navGroups; track navGroup.label) {
+                <p-sidebar-group-label>{{ navGroup.label }}</p-sidebar-group-label>
+                <p-sidebar-group-content>
+                  <p-sidebar-menu>
+                    @for (navItem of navGroup.items; track navItem.label) {
+                      <p-sidebar-menu-item>
+                        <button pSidebarMenuButton [isActive]="false" [routerLink]="navItem.href">
+                          <span class="material-symbols-rounded">
+                            {{ navItem.icon }}
+                          </span>
+                          <span>{{ navItem.label }}</span>
+                        </button>
+                        @if (navItem.badge) {
+                          <p-sidebar-menu-badge>{{ navItem.badge }}</p-sidebar-menu-badge>
+                        }
+                      </p-sidebar-menu-item>
+                    }
+                  </p-sidebar-menu>
+                </p-sidebar-group-content>
+              }
+            </p-sidebar-group>
+          </p-sidebar-content>
+          <p-sidebar-footer>
+            <p-sidebar-menu>
+              <p-sidebar-menu-item>
+                <button pSidebarMenuButton class="p-1!">
+                  <p-avatar label="{{ userAvatarLabel }}" shape="circle" />
+                  <span>{{ sessionUser()?.firstName }} {{ sessionUser()?.lastName }}</span>
+                </button>
+              </p-sidebar-menu-item>
+            </p-sidebar-menu>
+          </p-sidebar-footer>
+        </p-sidebar-panel>
+      </p-sidebar-aside>
+    </p-sidebar>
+    @if (side === 'left') {
+      <p-sidebar-main>
+        <router-outlet />
+      </p-sidebar-main>
+    }
+  </p-sidebar-layout>
+</div>

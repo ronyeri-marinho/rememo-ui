@@ -1,0 +1,18 @@
+.create-deck-form-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.create-deck-info-icon {
+  color: var(--rememo-primary);
+}
+
+.input-help-text {
+  color: var(--rememo-text-secondary);
+}
+
+.create-deck-button {
+  background-color: var(--rememo-primary);
+}
