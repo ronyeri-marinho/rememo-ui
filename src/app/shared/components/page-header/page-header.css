@@ -1,6 +1,6 @@
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
+.page-header-icon {
+  background-color: var(--rememo-primary);
+  color: var(--rememo-surface);
 }
 
 h1 span.material-symbols-rounded {
@@ -14,12 +14,7 @@ h1 div.page-header-title {
   gap: 0.5rem;
 }
 
-.page-header-icon {
-  background-color: var(--rememo-primary);
-}
-
-.paragraph-description {
+p {
   font-size: 0.9rem;
   color: var(--rememo-text-secondary);
-  margin-bottom: 1.5rem;
 }

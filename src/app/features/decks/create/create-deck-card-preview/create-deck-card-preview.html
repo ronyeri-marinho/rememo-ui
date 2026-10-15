@@ -1,0 +1,62 @@
+<aside>
+  <div class="flex flex-col gap-6 rounded-2x p-6 lg:p-8 deck-preview-panel">
+    <!-- REPRESENTAÇÃO DO DECK -->
+    <div class="flex flex-col items-center text-center py-5">
+      <div
+        class="flex h-20 w-20 items-center justify-center rounded-2xl border border-violet-100 bg-white shadow-sm"
+      >
+        <span class="material-symbols-rounded text-4xl text-violet-600">
+          {{ deckIcon }}
+        </span>
+      </div>
+
+      <h2 class="mt-5 text-xl font-semibold text-violet-950 wrap-break-word max-w-full">
+        {{ deckName }}
+      </h2>
+
+      <p
+        class="mt-2 text-sm leading-relaxed text-violet-800/80 whitespace-pre-line wrap-break-word max-w-full"
+      >
+        {{ deckDescription }}
+      </p>
+    </div>
+
+    <!-- DIVISÓRIA -->
+    <div class="border-t border-violet-200"></div>
+
+    <!-- DICA 1 -->
+    <div class="flex items-start gap-3">
+      <div
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm"
+      >
+        <span class="material-symbols-rounded text-xl text-violet-600"> check_circle </span>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-sm font-semibold text-violet-950">Organize por assunto</h3>
+
+        <p class="text-sm leading-relaxed text-violet-800/80">
+          Separe seus temas de estudo em decks diferentes para encontrar os conteúdos com
+          facilidade.
+        </p>
+      </div>
+    </div>
+
+    <!-- DICA 2 -->
+    <div class="flex items-start gap-3">
+      <div
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm"
+      >
+        <span class="material-symbols-rounded text-xl text-violet-600"> lightbulb </span>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-sm font-semibold text-violet-950">Aprenda com revisões</h3>
+
+        <p class="text-sm leading-relaxed text-violet-800/80">
+          Transforme os principais conceitos em perguntas e respostas para reforçar sua memória.
+        </p>
+      </div>
+    </div>
+  </div>
+</aside>

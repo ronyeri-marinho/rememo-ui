@@ -1,0 +1,27 @@
+<p-card class="deck-card w-full">
+  <ng-template #header>
+    <div class="card-header">
+      <button pButton>
+        <span class="material-symbols-rounded">{{ deck?.icon }}</span>
+      </button>
+
+      <h3 class="rememo-h3-title">{{ deck?.name }}</h3>
+
+      <p class="deck-description">{{ deck?.description }}</p>
+    </div>
+  </ng-template>
+
+  <ng-template #footer>
+    <div class="deck-card-footer">
+      <p-divider />
+
+      <div class="card-footer-content">
+        <span class="rememo-text-secondary"> {{ deck?.cardsCount || 0 }} cartões </span>
+
+        <button pButton iconOnly rounded variant="text" severity="contrast" aria-label="Abrir deck">
+          <span class="material-symbols-rounded">open_in_new</span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</p-card>

@@ -1,0 +1,36 @@
+<div class="icon-picker">
+  <div class="icon-picker__header">
+    <span class="icon-picker__label">Ícone do deck</span>
+    <span class="icon-picker__hint">
+      {{ selectedIcon ? 'Selecione para alterar' : 'Escolha um ícone' }}
+    </span>
+  </div>
+
+  <div class="icon-picker__grid">
+    @for (icon of icons; track icon.name) {
+      <button
+        type="button"
+        class="icon-picker__option"
+        [class.icon-picker__option--selected]="selectedIcon === icon.name"
+        [attr.aria-label]="icon.label"
+        [attr.aria-pressed]="selectedIcon === icon.name"
+        [title]="icon.label"
+        (click)="selectIcon(icon.name)"
+      >
+        <span class="material-symbols-rounded" aria-hidden="true">
+          {{ icon.name }}
+        </span>
+      </button>
+    }
+  </div>
+
+  <div class="icon-picker__preview">
+    <span class="icon-picker__preview-box">
+      <span class="material-symbols-rounded" aria-hidden="true">
+        {{ selectedIcon || 'school' }}
+      </span>
+    </span>
+
+    <span class="icon-picker__preview-text"> Ícone selecionado </span>
+  </div>
+</div>

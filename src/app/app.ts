@@ -6,12 +6,7 @@ import { ToastModule } from 'primeng/toast';
 @Component({
   imports: [RouterOutlet, ToastModule],
   selector: 'app-root',
-  template: `@if (sessionReady()) {
-      <router-outlet />
-      <p-toast />
-    } @else {
-      <div class="flex min-h-screen items-center justify-center">Carregando...</div>
-    }`,
+  templateUrl: './app.html',
 })
 export class App implements OnInit {
   protected readonly title = signal('rememo-ui');

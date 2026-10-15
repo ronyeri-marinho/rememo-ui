@@ -1,0 +1,19 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 items-stretch">
+  @for (item of [1, 2, 3, 4, 5, 6]; track $index) {
+    <div class="deck-card-skeleton">
+      <div class="skeleton-icon">
+        <p-skeleton width="36px" height="36px" borderRadius="8px"></p-skeleton>
+      </div>
+
+      <div class="skeleton-content">
+        <p-skeleton width="60%" height="1.25rem" styleClass="mb-2"></p-skeleton>
+        <p-skeleton width="90%" height="0.875rem" styleClass="mb-1"></p-skeleton>
+      </div>
+
+      <div class="skeleton-footer">
+        <p-skeleton width="60px" height="0.875rem"></p-skeleton>
+        <p-skeleton width="18px" height="18px" borderRadius="4px"></p-skeleton>
+      </div>
+    </div>
+  }
+</div>

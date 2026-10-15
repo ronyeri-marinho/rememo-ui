@@ -1,0 +1,14 @@
+p-sidebar-panel {
+  background-color: var(--rememo-surface);
+  border-radius: var(--rememo-radius);
+  box-shadow: var(--rememo-shadow-md);
+}
+
+.p-sidebar-menu-button {
+  color: var(--rememo-text-secondary);
+}
+
+.p-sidebar-menu-button:hover {
+  color: var(--rememo-primary);
+  background-color: var(--rememo-primary-light);
+}
