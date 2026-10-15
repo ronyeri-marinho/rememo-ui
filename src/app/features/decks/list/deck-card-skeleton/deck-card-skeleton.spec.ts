@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListDecks } from './list-decks';
+import { DeckCardSkeleton } from './deck-card-skeleton';
 
-describe('ListDecks', () => {
-  let component: ListDecks;
-  let fixture: ComponentFixture<ListDecks>;
+describe('DeckCardSkeleton', () => {
+  let component: DeckCardSkeleton;
+  let fixture: ComponentFixture<DeckCardSkeleton>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListDecks],
+      imports: [DeckCardSkeleton],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListDecks);
+    fixture = TestBed.createComponent(DeckCardSkeleton);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

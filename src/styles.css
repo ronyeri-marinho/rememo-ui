@@ -3,24 +3,43 @@
 @import 'tailwindcss-primeui';
 
 :root {
-  /* Identidade visual */
-  --rememo-primary: #6d4aff;
-  --rememo-primary-dark: #5535d9;
-  --rememo-primary-light: #eee9ff;
+  /* Marca / Principal */
+  --rememo-primary: #6366f1; /* Roxo/Índigo mais moderno e vibrante */
+  --rememo-primary-hover: #4f46e5;
+  --rememo-primary-light: #eef2ff; /* Fundo de destaque super suave */
+  --rememo-primary-text: #4338ca; /* Para textos em destaque sobre fundo claro */
 
-  /* Superfícies */
-  --rememo-background: #faf9fc;
-  --rememo-surface: #ffffff;
-  --rememo-border: #e7e5ea;
+  /* Superfícies e Fundos */
+  --rememo-bg: #f8fafc; /* Fundo geral da aplicação (cinza gelo bem sutil) */
+  --rememo-surface: #ffffff; /* Cards, modais e containers */
+  --rememo-surface-hover: #f1f5f9;
+
+  /* Bordas e Divisores */
+  --rememo-border: #e2e8f0; /* Bordas limpas e discretas */
+  --rememo-border-focus: #6366f1;
 
   /* Tipografia */
-  --rememo-text: #3f4041;
-  --rememo-text-secondary: #737982;
+  --rememo-text: #0f172a; /* Títulos e textos principais (quase preto, alta legibilidade) */
+  --rememo-text-secondary: #64748b; /* Descrições, subtítulos e ícones inativos */
+  --rememo-text-muted: #94a3b8; /* Detalhes de rodapé, contadores */
 
-  /* Estados */
-  --rememo-success: #22a06b;
-  --rememo-error: #d64545;
-  --rememo-warning: #d99a00;
+  /* Estados e Feedback */
+  --rememo-success: #10b981;
+  --rememo-success-light: #ecfdf5;
+  --rememo-error: #ef4444;
+  --rememo-error-light: #fef2f2;
+  --rememo-warning: #f59e0b;
+  --rememo-warning-light: #fffbeb;
+
+  /* Efeitos e Sombras */
+  --rememo-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --rememo-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --rememo-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
+  /* Arredondamento Padrão */
+  --rememo-radius: 10px;
+  --rememo-radius-sm: 6px;
+  --rememo-radius-lg: 16px;
 
   --p-inputtext-focus-border-color: var(--rememo-primary);
   --p-textarea-focus-border-color: var(--rememo-primary);
@@ -33,26 +52,58 @@ body {
 
 p-sidebar-main {
   color: var(--rememo-text);
-  background-color: var(--rememo-background);
+  background-color: var(--rememo-bg);
   padding: 20px 20px;
 }
 
-.rememo-primary-gradient-button {
-  /*background: linear-gradient(135deg, #6d4aff 0%, #5535d9 50%, #a855f7 100%) !important;*/
-  background: var(--rememo-primary);
+/* BUTTONS */
 
-  color: #ffffff !important;
-  border: none !important;
-  border-radius: 10px;
+.rememo-button-primary {
+  background-color: var(--rememo-primary);
+  color: var(--rememo-surface);
+  border: none;
+  border-radius: var(--rememo-radius);
   transition:
-    filter 0.2s ease,
-    transform 0.2s ease;
+    filter 0.5s ease,
+    transform 0.5s ease;
 }
 
-.rememo-primary-gradient-button:hover {
+.rememo-button-primary:hover {
+  background-color: var(--rememo-primary-hover);
   filter: brightness(1.08);
+  transform: translateY(-1px) scale(1.02);
+  transition:
+    background-color 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease;
 }
 
-.rememo-primary-gradient-button:active {
-  transform: scale(0.98);
+/*END BUTTONS */
+
+/* TEXTS */
+.rememo-h1-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--rememo-text);
+}
+
+.rememo-h3-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--rememo-text);
+}
+
+.rememo-h4-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--rememo-text);
+}
+
+.rememo-text-secondary {
+  color: var(--rememo-text-secondary);
+  font-size: 1rem;
+}
+
+p-card {
+  box-shadow: var(--rememo-shadow-md);
 }

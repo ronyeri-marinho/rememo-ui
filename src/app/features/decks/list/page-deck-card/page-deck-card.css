@@ -1,0 +1,79 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+p-card {
+  background-color: var(--rememo-surface);
+  border-radius: var(--rememo-radius);
+}
+
+p-card:hover {
+  transform: translateY(-1px) scale(1.02);
+  transition:
+    background-color 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease;
+}
+
+.deck-card {
+  height: 100%;
+  min-height: 280px;
+}
+
+.card-header {
+  padding: 1rem;
+}
+
+.card-header button {
+  background: var(--rememo-primary-light);
+  color: var(--rememo-primary);
+  border: none;
+  cursor: default;
+}
+
+.card-header h3 {
+  margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--rememo-text);
+
+  height: 3.5rem;
+  line-height: 1.75rem;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.card-header p {
+  color: var(--rememo-text-secondary);
+  font-size: 1rem;
+}
+
+.deck-description {
+  height: 4.5rem;
+  line-height: 1.5rem;
+  margin: 0;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.card-footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-footer-content button span {
+  color: var(--rememo-primary);
+}

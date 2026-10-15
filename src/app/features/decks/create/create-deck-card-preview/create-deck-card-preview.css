@@ -1,0 +1,11 @@
+.deck-preview-panel {
+  background-color: var(--rememo-primary-light);
+  box-shadow: var(--rememo-shadow-md);
+  border-radius: var(--rememo-radius);
+}
+
+.deck-preview-header {
+  color: var(--rememo-text);
+  font-weight: 600;
+  font-size: 0.875rem;
+}

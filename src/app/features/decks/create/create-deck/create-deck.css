@@ -16,3 +16,8 @@
 .create-deck-button {
   background-color: var(--rememo-primary);
 }
+
+form label {
+  font-weight: 600;
+  color: var(--rememo-text);
+}

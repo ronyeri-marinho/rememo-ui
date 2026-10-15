@@ -1,0 +1,95 @@
+<section>
+  <!-- PAGE HEADER -->
+  <app-page-header
+    [icon]="'layers'"
+    [title]="'Novo Deck'"
+    [description]="'Crie um espaço para organizar seus estudos, adicionando cards e revisando-os de forma eficiente.'"
+  />
+
+  <!-- PAGE BODY -->
+  <div class="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr] gap-6 mt-6">
+    <!-- FORM -->
+    <aside>
+      <p-card>
+        <div class="create-deck-form-header flex items-center gap-2 mb-6">
+          <span class="material-symbols-rounded create-deck-info-icon"> edit_note </span>
+          <h4 class="rememo-h4-title">Informações do Deck</h4>
+        </div>
+
+        <form [formGroup]="createDeckForm" (ngSubmit)="createDeck()">
+          <div class="flex flex-col gap-2">
+            <label pLabel for="name">
+              Nome do Deck
+              <span class="text-red-500">*</span>
+            </label>
+
+            <input
+              pInputText
+              id="name"
+              formControlName="name"
+              maxlength="255"
+              pSize="large"
+              placeholder="Ex. Sistemas Distribuídos"
+              [invalid]="nameControl?.invalid && nameControl.touched"
+              aria-describedby="deck-name-help"
+            />
+
+            <small id="deck-name-help" class="text-sm input-help-text">
+              O nome é obrigatório e deve conter até 255 caracteres.
+            </small>
+          </div>
+
+          <!-- DESCRIÇÃO -->
+          <div class="flex flex-col gap-2 mt-5">
+            <label pLabel for="description" class="font-bold"> Descrição </label>
+
+            <textarea
+              pTextarea
+              id="description"
+              formControlName="description"
+              aria-describedby="deck-description-help"
+              maxlength="500"
+              pSize="large"
+              placeholder="Sobre o que você vai estudar neste deck..."
+              rows="4"
+            ></textarea>
+
+            <small id="deck-description-help" class="text-sm input-help-text">
+              Opcional. Máximo de 500 caracteres.
+            </small>
+          </div>
+
+          <!-- SELEÇÃO DE ÍCONE -->
+          <div class="mt-7 pt-5 border-t border-(--rememo-border)">
+            <app-deck-icon-picker [(selectedIcon)]="selectedIcon" />
+          </div>
+
+          <!-- AÇÕES -->
+          <div class="flex justify-end mt-7">
+            <button
+              pButton
+              type="submit"
+              size="large"
+              severity="help"
+              class="create-deck-button rememo-button-primary w-full"
+              [disabled]="createDeckForm.invalid"
+            >
+              <span class="material-symbols-rounded">add</span>
+              Criar Deck
+            </button>
+          </div>
+        </form>
+      </p-card>
+    </aside>
+
+    <!-- PAINEL DE PRÉVIA -->
+    <app-create-deck-card-preview
+      [deckIcon]="selectedIcon"
+      [deckName]="createDeckForm.get('name')?.value || 'Nome do seu deck'"
+      [deckDescription]="
+        createDeckForm.get('description')?.value ||
+        'Sua descrição aparecerá aqui. Conte um pouco sobre o que você pretende estudar.'
+      "
+    />
+  </div>
+</section>

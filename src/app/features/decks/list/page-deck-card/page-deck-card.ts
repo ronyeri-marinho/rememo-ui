@@ -5,7 +5,7 @@ import { DividerModule } from 'primeng/divider';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
-import { Deck } from '../../../models/deck/deck.model';
+import { Deck } from '../../../../models/deck/deck.model';
 
 @Component({
   imports: [

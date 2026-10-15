@@ -6,11 +6,13 @@ import { TextareaModule } from 'primeng/textarea';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 
-import { PageHeader } from '../../../shared/components/page-header/page-header';
-import { CreateDeckModel } from '../../../models/deck/create-deck.model';
-import { DeckRestApiService } from '../../../core/service/api/deck-rest-api.service';
+import { PageHeader } from '../../../../shared/components/page-header/page-header';
+import { CreateDeckModel } from '../../../../models/deck/create-deck.model';
+import { DeckRestApiService } from '../../../../core/service/api/deck-rest-api.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { CreateDeckCardPreview } from '../create-deck-card-preview/create-deck-card-preview';
+import { DeckIconPicker } from '../deck-icon-picker/deck-icon-picker';
 
 @Component({
   imports: [
@@ -22,6 +24,8 @@ import { MessageService } from 'primeng/api';
     TextareaModule,
     CardModule,
     ButtonModule,
+    DeckIconPicker,
+    CreateDeckCardPreview,
   ],
   selector: 'app-create-deck',
   styleUrl: './create-deck.css',
@@ -36,6 +40,7 @@ export class CreateDeck {
     private readonly _messageService: MessageService,
   ) {}
 
+  public selectedIcon = 'school';
   public createDeckForm = this._createDeckFormBuilder.group({
     name: ['', [Validators.required, Validators.maxLength(255)]],
     description: [''],
@@ -69,6 +74,7 @@ export class CreateDeck {
 
   createDeck() {
     const body = this.createDeckForm.value as CreateDeckModel;
+    body.icon = this.selectedIcon;
 
     this.deckRestApiService.createDeck(body).subscribe({
       next: () => {

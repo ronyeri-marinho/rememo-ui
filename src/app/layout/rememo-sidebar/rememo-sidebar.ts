@@ -23,7 +23,7 @@ interface NavGroup {
 @Component({
   imports: [AvatarModule, SidebarModule, ButtonModule, RouterLinkWithHref, RouterOutlet],
   selector: 'app-rememo-sidebar',
-  styleUrl: './rememo-sidebar.scss',
+  styleUrl: './rememo-sidebar.css',
   templateUrl: './rememo-sidebar.html',
 })
 export class RememoSidebar {
@@ -36,7 +36,7 @@ export class RememoSidebar {
       label: 'Menu',
       items: [
         { icon: 'home', label: 'Página Inicial', href: '/' },
-        { icon: 'layers', label: 'Decks', badge: '12', href: '/decks' },
+        { icon: 'layers', label: 'Decks', href: '/decks' },
         { icon: 'settings', label: 'Configurações', href: '/settings' },
       ],
     },

@@ -10,6 +10,10 @@
   margin-bottom: 1rem;
 }
 
+.search-bar span {
+  color: var(--rememo-text-secondary);
+}
+
 .cards-section-header {
   display: flex;
   justify-content: space-between;
@@ -21,9 +25,4 @@
 .cards-section-header h4 {
   color: var(--rememo-text);
   font-weight: 600;
-}
-
-.cards-section-header span {
-  color: var(--rememo-text-secondary);
-  font-size: 1rem;
 }
