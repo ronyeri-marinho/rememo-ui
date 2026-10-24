@@ -4,9 +4,10 @@ import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { AvatarModule } from 'primeng/avatar';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from 'primeng/button';
-import { SidebarCollapsible, SidebarSide, SidebarVariant } from 'primeng/types/sidebar';
+import { SidebarSide } from 'primeng/types/sidebar';
 import { User } from '../../models/user/user.model';
 import { UserSessionService } from '../../core/service/user-session.service';
+import { RouterLinkActive } from '@angular/router';
 
 interface NavItem {
   icon: string;
@@ -21,7 +22,14 @@ interface NavGroup {
 }
 
 @Component({
-  imports: [AvatarModule, SidebarModule, ButtonModule, RouterLinkWithHref, RouterOutlet],
+  imports: [
+    AvatarModule,
+    SidebarModule,
+    ButtonModule,
+    RouterLinkWithHref,
+    RouterOutlet,
+    RouterLinkActive,
+  ],
   selector: 'app-rememo-sidebar',
   styleUrl: './rememo-sidebar.css',
   templateUrl: './rememo-sidebar.html',
@@ -43,6 +51,7 @@ export class RememoSidebar {
   ];
 
   isMobile = signal(false);
+  isSidebarVisible = signal(false);
 
   private defineAvatarLabel(user: User | null): void {
     if (user) {
@@ -61,5 +70,13 @@ export class RememoSidebar {
     const mql = window.matchMedia('(max-width: 1023px)');
     this.isMobile.set(mql.matches);
     mql.addEventListener('change', (e) => this.isMobile.set(e.matches));
+  }
+
+  public closeSidebar() {
+    this.isSidebarVisible.set(false);
+  }
+
+  public toggleSidebar() {
+    this.isSidebarVisible.set(!this.isSidebarVisible());
   }
 }

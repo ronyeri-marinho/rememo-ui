@@ -1,0 +1,64 @@
+<section class="deck-details-skeleton">
+  <header class="deck-header-skeleton">
+    <p-skeleton shape="square" size="3.75rem" borderRadius="0.75rem" />
+
+    <div class="deck-header-skeleton__info">
+      <p-skeleton width="16rem" height="2.25rem" />
+      <p-skeleton width="min(32rem, 90%)" height="1.25rem" />
+    </div>
+
+    <p-skeleton
+      shape="square"
+      size="3rem"
+      borderRadius="0.5rem"
+      styleClass="deck-header-skeleton__menu"
+    />
+  </header>
+
+  <p-divider />
+
+  <div class="section-heading-skeleton">
+    <p-skeleton width="10rem" height="1.5rem" />
+    <p-skeleton width="4.5rem" height="1.25rem" />
+  </div>
+
+  <div class="stats-skeleton">
+    @for (item of [1, 2, 3]; track item) {
+      <div class="stat-skeleton">
+        <div class="stat-skeleton__heading">
+          <p-skeleton width="6rem" height="1.25rem" />
+          <p-skeleton shape="circle" size="1.5rem" />
+        </div>
+
+        <p-skeleton width="2rem" height="1.75rem" styleClass="stat-skeleton__value" />
+      </div>
+    }
+  </div>
+
+  <div class="actions-skeleton">
+    <p-skeleton height="4.375rem" styleClass="actions-skeleton__study" />
+
+    <p-skeleton width="10.625rem" height="4.375rem" styleClass="actions-skeleton__create" />
+  </div>
+
+  <div class="cards-panel-skeleton">
+    <div class="cards-panel-skeleton__header">
+      <p-skeleton width="12rem" height="1.5rem" />
+
+      <p-skeleton width="25rem" height="3.25rem" styleClass="cards-panel-skeleton__search" />
+    </div>
+
+    <div class="cards-panel-skeleton__content">
+      @for (item of [1, 2, 3]; track item) {
+        <div class="flashcard-row-skeleton">
+          <div class="flashcard-row-skeleton__text">
+            <p-skeleton width="35%" height="1.125rem" />
+            <p-skeleton width="65%" height="0.875rem" />
+          </div>
+
+          <p-skeleton width="5rem" height="2rem" borderRadius="0.5rem" />
+        </div>
+      }
+    </div>
+  </div>
+</section>

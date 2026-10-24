@@ -26,3 +26,7 @@
   color: var(--rememo-text);
   font-weight: 600;
 }
+
+.empty-list-message {
+  margin-top: 5rem;
+}

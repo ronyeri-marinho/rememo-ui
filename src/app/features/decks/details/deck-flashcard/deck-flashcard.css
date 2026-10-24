@@ -1,0 +1,63 @@
+.flashcard-preview {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  max-height: 3em;
+  color: var(--rememo-text-secondary);
+  font-size: 0.875rem;
+}
+
+.flashcard-card {
+  height: 100%;
+}
+
+.flashcard-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 0;
+}
+
+.flashcard-question {
+  margin: 0;
+  color: var(--rememo-text);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.flashcard-card ::ng-deep .p-card-body {
+  padding: 0 1.25rem 1.25rem;
+}
+
+.flashcard-card ::ng-deep .p-card-content {
+  padding: 0;
+}
+
+.flashcard-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.flashcard-edit-button {
+  background: var(--rememo-primary-light);
+  color: var(--rememo-primary);
+  border: 1px solid var(--rememo-border);
+}
+
+.flashcard-delete-button {
+  background: var(--rememo-error-light);
+  border: 1px solid var(--rememo-border);
+  color: var(--rememo-error);
+}

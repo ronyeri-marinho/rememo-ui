@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
+@import 'quill/dist/quill.snow.css';
 
 :root {
   /* Marca / Principal */
@@ -27,6 +28,7 @@
   --rememo-success: #10b981;
   --rememo-success-light: #ecfdf5;
   --rememo-error: #ef4444;
+   --rememo-error-light: #d7a3a3;
   --rememo-error-light: #fef2f2;
   --rememo-warning: #f59e0b;
   --rememo-warning-light: #fffbeb;
@@ -43,6 +45,11 @@
 
   --p-inputtext-focus-border-color: var(--rememo-primary);
   --p-textarea-focus-border-color: var(--rememo-primary);
+
+  --rememo-card-background: #f7f8fc;
+  --rememo-card-border: #dfe3ec;
+
+  --rememo-card-shadow: 0 2px 5px rgb(23 25 35 / 5%), 0 4px 12px rgb(23 25 35 / 4%);
 }
 
 html,
@@ -53,7 +60,7 @@ body {
 p-sidebar-main {
   color: var(--rememo-text);
   background-color: var(--rememo-bg);
-  padding: 20px 20px;
+  padding: 0.5rem 20px;
 }
 
 /* BUTTONS */
@@ -76,6 +83,41 @@ p-sidebar-main {
     background-color 0.5s ease,
     filter 0.5s ease,
     transform 0.5s ease;
+}
+
+.rememo-simple-button-primary {
+  background-color: var(--rememo-primary);
+  color: var(--rememo-surface);
+  border: none;
+  border-radius: var(--rememo-radius);
+}
+
+.rememo-simple-button-primary:hover {
+  background-color: var(--rememo-primary-hover);
+  filter: brightness(1.08);
+  transition:
+    background-color 0.5s ease,
+    filter 0.5s ease,
+    transform 0.5s ease;
+}
+
+.rememo-button-secondary {
+  border: 2px solid var(--rememo-primary);
+  border-radius: var(--rememo-radius);
+  background: var(--rememo-surface);
+  color: var(--rememo-primary);
+  transition: all 0.18s ease;
+}
+
+.rememo-button-secondary:hover {
+  background: var(--rememo-primary-light);
+  border-color: var(--rememo-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(109, 74, 255, 0.12);
+}
+
+.rememo-button-secondary .material-symbols-rounded {
+  color: inherit;
 }
 
 /*END BUTTONS */
@@ -106,4 +148,60 @@ p-sidebar-main {
 
 p-card {
   box-shadow: var(--rememo-shadow-md);
+}
+
+.rememo-header-menu a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--rememo-text-secondary);
+  text-decoration: none;
+  border-radius: 0.375rem;
+}
+
+.rememo-header-menu a:hover {
+  color: var(--rememo-primary);
+  background-color: var(--rememo-primary-light);
+}
+
+.rememo-header-menu a .material-symbols-rounded {
+  color: inherit;
+  font-size: 1.25rem;
+}
+
+.rememo-card {
+  background: var(--rememo-surface);
+  border: 1px solid var(--rememo-card-border);
+  border-radius: var(--rememo-radius, 0.875rem);
+  box-shadow: var(--rememo-card-shadow);
+}
+
+quill-editor {
+  display: block;
+  width: 100%;
+}
+
+.ql-toolbar.ql-snow {
+  border: 1px solid var(--rememo-border);
+  border-radius: 10px 10px 0 0;
+  background-color: var(--rememo-surface);
+}
+
+.ql-container.ql-snow {
+  border: 1px solid var(--rememo-border);
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+}
+
+.ql-editor {
+  min-height: 180px;
+  color: var(--rememo-text);
+  line-height: 1.6;
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--rememo-text-secondary);
+  font-style: normal;
 }

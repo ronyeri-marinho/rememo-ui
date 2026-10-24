@@ -1,0 +1,34 @@
+<p-card class="rememo-card flashcard-card mb-2">
+  <ng-template #header>
+    <div class="flashcard-card-header mb-2">
+      <h4 class="flashcard-question">{{ question }}</h4>
+      <div class="flashcard-card-actions">
+        <button
+          pButton
+          iconOnly
+          class="flashcard-edit-button"
+          aria-label="Editar"
+          (click)="onEdit()"
+        >
+          <span class="material-symbols-rounded">edit</span>
+        </button>
+
+        <button
+          pButton
+          iconOnly
+          class="flashcard-delete-button"
+          aria-label="Excluir"
+          (click)="onDelete()"
+        >
+          <span class="material-symbols-rounded">delete</span>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #content>
+    <p class="flashcard-preview">
+      {{ stripHtml(answer) }}
+    </p>
+  </ng-template>
+</p-card>

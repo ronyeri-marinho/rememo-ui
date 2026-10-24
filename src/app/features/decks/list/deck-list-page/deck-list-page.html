@@ -38,11 +38,13 @@
 
   <!-- DECKS LIST -->
   @if (initialLoadComplete && !loading() && !error && decks().length === 0) {
-    <app-page-empty-message
-      [icon]="'layers'"
-      [title]="'Oops!'"
-      [description]="'Não há decks para exibir. Crie um novo ou tente pesquisar por outro termo.'"
-    />
+    <div class="empty-list-message">
+      <app-page-empty-message
+        [icon]="'layers'"
+        [title]="'Oops!'"
+        [description]="'Não há decks para exibir. Crie um novo ou tente pesquisar por outro termo.'"
+      />
+    </div>
   }
 
   @if (decks().length > 0) {

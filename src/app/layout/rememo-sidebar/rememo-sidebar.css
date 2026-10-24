@@ -12,3 +12,23 @@ p-sidebar-panel {
   color: var(--rememo-primary);
   background-color: var(--rememo-primary-light);
 }
+
+.sidebar-menu-button {
+  margin-bottom: 2rem;
+  color: var(--rememo-text-secondary);
+}
+
+.sidebar-menu-button button {
+  padding: 0;
+  color: var(--rememo-text-muted);
+}
+
+.rememo-menu-item-active {
+  background-color: var(--rememo-primary-light) !important;
+  color: var(--rememo-primary) !important;
+  font-weight: 600;
+}
+
+.rememo-menu-item-active .material-symbols-rounded {
+  color: var(--rememo-primary);
+}

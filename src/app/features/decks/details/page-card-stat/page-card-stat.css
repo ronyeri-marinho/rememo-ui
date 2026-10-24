@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  min-width: 0;
+  width: 100%;
+}
+
+p-card {
+  background-color: var(--rememo-surface);
+  border-radius: var(--rememo-radius);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+.card-header p {
+  color: var(--rememo-text-secondary);
+  font-size: 1rem;
+}
+
+.card-header span {
+  color: var(--rememo-text-secondary);
+}
+
+.card-content {
+  padding: 0 0rem 0.5rem 1rem;
+}

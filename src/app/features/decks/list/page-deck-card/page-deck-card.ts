@@ -6,6 +6,7 @@ import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
 import { Deck } from '../../../../models/deck/deck.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   imports: [
@@ -15,6 +16,7 @@ import { Deck } from '../../../../models/deck/deck.model';
     InputGroupModule,
     InputGroupAddonModule,
     InputTextModule,
+    RouterLink,
   ],
   selector: 'app-page-deck-card',
   styleUrl: './page-deck-card.css',
