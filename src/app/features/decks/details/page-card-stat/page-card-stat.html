@@ -1,0 +1,19 @@
+<p-card class="rememo-card w-full">
+  <ng-template #header>
+    <div class="card-header">
+      <p>{{ cardTitle }}</p>
+      <span class="material-symbols-rounded" [pTooltip]="tooltipContent">help</span>
+      <ng-template #tooltipContent>
+        <div class="font-semibold text-sm">{{ cardTitle }}</div>
+        <div class="opacity-75 text-sm mt-1">
+          {{ helpText}}
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+  <ng-template #content>
+    <div class="card-content">
+      <h3 class="rememo-h3-title">{{ value }}</h3>
+    </div>
+  </ng-template>
+</p-card>

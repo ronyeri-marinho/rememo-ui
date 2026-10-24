@@ -3,7 +3,7 @@ export interface Deck {
   name: string;
   description: string;
   cardsCount?: number | 0;
-  icon?: string;
+  icon: string;
   createdAt?: Date;
   updatedAt?: Date;
 }

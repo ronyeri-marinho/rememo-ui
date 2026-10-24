@@ -1,6 +1,7 @@
 .deck-preview-panel {
   background-color: var(--rememo-primary-light);
-  box-shadow: var(--rememo-shadow-md);
+  box-shadow: var(--rememo-card-shadow);
+  border: 1px solid var(--rememo-card-border);
   border-radius: var(--rememo-radius);
 }
 
@@ -8,4 +9,11 @@
   color: var(--rememo-text);
   font-weight: 600;
   font-size: 0.875rem;
+}
+
+.rememo-card {
+  background: var(--rememo-surface);
+  border: 1px solid var(--rememo-card-border);
+  border-radius: var(--rememo-radius, 0.875rem);
+  box-shadow: var(--rememo-card-shadow);
 }

@@ -5,9 +5,9 @@
     }
     <p-sidebar
       id="mobile-nav"
-      [collapsible]="isMobile() ? 'offcanvas' : 'icon'"
+      [collapsible]="'offcanvas'"
       [overlay]="isMobile()"
-      [open]="!isMobile()"
+      [open]="!isMobile() || isSidebarVisible()"
       width="14rem"
     >
       <p-sidebar-spacer />
@@ -33,7 +33,16 @@
                   <p-sidebar-menu>
                     @for (navItem of navGroup.items; track navItem.label) {
                       <p-sidebar-menu-item>
-                        <button pSidebarMenuButton [isActive]="false" [routerLink]="navItem.href">
+                        <button
+                          pSidebarMenuButton
+                          [routerLink]="navItem.href"
+                          routerLinkActive
+                          #rla="routerLinkActive"
+                          [routerLinkActiveOptions]="{ exact: true }"
+                          [isActive]="rla.isActive"
+                          [class.rememo-menu-item-active]="rla.isActive"
+                          (click)="closeSidebar()"
+                        >
                           <span class="material-symbols-rounded">
                             {{ navItem.icon }}
                           </span>
@@ -62,10 +71,23 @@
         </p-sidebar-panel>
       </p-sidebar-aside>
     </p-sidebar>
-    @if (side === 'left') {
-      <p-sidebar-main class="h-full min-h-0 overflow-y-auto">
-        <router-outlet />
-      </p-sidebar-main>
-    }
+    <p-sidebar-main class="h-full min-h-0 overflow-y-auto">
+      <header class="sidebar-menu-button">
+        <button
+          pButton
+          pSidebarTrigger
+          target="mobile-nav"
+          severity="secondary"
+          [text]="true"
+          [rounded]="true"
+          aria-label="Abrir ou recolher menu"
+          (click)="toggleSidebar()"
+        >
+          <span class="material-symbols-rounded">menu_open</span>
+        </button>
+      </header>
+
+      <router-outlet />
+    </p-sidebar-main>
   </p-sidebar-layout>
 </div>

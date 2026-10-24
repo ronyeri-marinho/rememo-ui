@@ -1,0 +1,19 @@
+.input-help-text {
+  color: var(--rememo-text-secondary);
+}
+
+form label {
+  font-weight: 600;
+  color: var(--rememo-text);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 0.5rem 1rem;
+}
+
+p-badge {
+  background-color: var(--rememo-primary);
+}

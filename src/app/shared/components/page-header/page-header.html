@@ -1,12 +1,48 @@
-<div class="flex items-center gap-3">
-  <div class="flex items-center justify-center size-12 page-header-icon rounded-lg">
-    <span class="material-symbols-rounded">
-      {{ icon }}
-    </span>
+<div class="flex items-center gap-4 w-full mb-8">
+  <!-- Conteúdo principal -->
+  <div class="flex items-center gap-3 min-w-0 flex-1">
+    <div class="flex items-center justify-center size-12 page-header-icon rounded-lg shrink-0">
+      <span class="material-symbols-rounded">
+        {{ icon }}
+      </span>
+    </div>
+
+    <div class="min-w-0">
+      <h1 class="rememo-h1-title">{{ title }}</h1>
+      <p class="text-sm">{{ description }}</p>
+    </div>
   </div>
 
-  <div>
-    <h1 class="rememo-h1-title">{{ title }}</h1>
-    <p class="text-sm">{{ description }}</p>
-  </div>
+  @if (showMenu) {
+    <div class="shrink-0 ml-auto">
+      <p-menu
+        styleClass="rememo-header-menu"
+        #menu
+        [model]="menuItems"
+        [popup]="true"
+        appendTo="body"
+      >
+        <ng-template #item let-item>
+          <a pRipple class="flex items-center gap-2 px-2.5 py-1.5 cursor-pointer">
+            <span class="material-symbols-rounded">
+              {{ item.icon }}
+            </span>
+            <span class="text-sm">{{ item.label }}</span>
+          </a>
+        </ng-template>
+      </p-menu>
+
+      <button
+        type="button"
+        pButton
+        severity="secondary"
+        [outlined]="true"
+        iconOnly
+        aria-label="Abrir menu de ações"
+        (click)="menu.toggle($event)"
+      >
+        <span class="material-symbols-rounded">more_horiz</span>
+      </button>
+    </div>
+  }
 </div>

@@ -1,0 +1,88 @@
+<section>
+  @if (!isLoadingDeck()) {
+    <app-page-header
+      [icon]="deck().icon"
+      [title]="deck().name"
+      [description]="deck().description"
+      [showMenu]="true"
+      [menuItems]="items"
+    ></app-page-header>
+
+    <p-divider />
+
+    <div class="deck-cards-details-header">
+      <h4 class="rememo-h4-title">
+        <span class="material-symbols-rounded">stacks</span> Seus cards
+      </h4>
+
+      <span class="rememo-text-secondary">{{ deck().cardsCount || 0 }} cards</span>
+    </div>
+    <div class="deck-cards-stats">
+      <app-page-card-stat
+        cardTitle="Novos"
+        value="{{ deck().cardsCount || 0 }}"
+        helpText="Cards que você ainda não estudou. Comece por eles para aprender novos conteúdos."
+      />
+      <app-page-card-stat
+        cardTitle="Aprendendo"
+        value="{{ deck().cardsCount || 0 }}"
+        helpText="Cards que você está estudando e ainda precisa revisar com mais frequência para memorizar."
+      />
+      <app-page-card-stat
+        cardTitle="Revisar"
+        value="{{ deck().cardsCount || 0 }}"
+        helpText="Cards que você já estudou e estão prontos para uma nova revisão, ajudando a fixar o conteúdo na memória."
+      />
+    </div>
+
+    <div class="mt-4 flex gap-2 w-full">
+      <button
+        pButton
+        size="large"
+        severity="help"
+        class="rememo-simple-button-primary w-full flex-1 min-w-0 min-h-14"
+        routerLink="/decks/new"
+      >
+        <span class="material-symbols-rounded">neurology</span> Estudar agora
+      </button>
+
+      <button
+        pButton
+        size="large"
+        severity="help"
+        class="rememo-button-secondary shrink-0"
+        routerLink="/decks/{{ deck()?.uuid }}/new-flashcard"
+      >
+        <span class="material-symbols-rounded">add</span> Novo card
+      </button>
+    </div>
+
+    <div class="deck-cards">
+      <p-card class="rememo-card w-full">
+        <ng-template #header>
+          <div class="deck-cards-header">
+            <h4 class="rememo-h4-title">Cards do deck</h4>
+
+            <p-inputgroup class="deck-cards-search">
+              <p-inputgroup-addon>
+                <span class="material-symbols-rounded">search</span>
+              </p-inputgroup-addon>
+
+              <input
+                pInputText
+                type="text"
+                pSize="large"
+                [formControl]="searchControl"
+                placeholder="Pesquisar cards..."
+              />
+            </p-inputgroup>
+          </div>
+        </ng-template>
+
+        <ng-template #content> </ng-template>
+      </p-card>
+    </div>
+  } @else {
+    <app-deck-details-skeleton />
+  }
+</section>

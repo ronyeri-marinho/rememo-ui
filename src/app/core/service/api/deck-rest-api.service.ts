@@ -14,6 +14,10 @@ export class DeckRestApiService {
 
   constructor(private httpClient: HttpClient) {}
 
+  getDeck(uuid: string): Observable<Deck> {
+    return this.httpClient.get<Deck>(`${this.baseUrl}/${uuid}`);
+  }
+
   list(page: number, size: number, search = ''): Observable<PageResponse<Deck>> {
     let params = new HttpParams().set('page', page).set('size', size).set('sort', 'updatedAt,desc');
 

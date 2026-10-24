@@ -19,6 +19,7 @@ p-card:hover {
 .deck-card {
   height: 100%;
   min-height: 280px;
+  cursor: pointer;
 }
 
 .card-header {

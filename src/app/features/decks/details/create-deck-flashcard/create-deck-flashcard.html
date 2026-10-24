@@ -1,0 +1,114 @@
+<section>
+  @if (!isLoadingDeck()) {
+    <app-page-header
+      [icon]="'stacks'"
+      [title]="'Novo Flashcard'"
+      [description]="'Deck: ' + deck().name"
+      [showMenu]="false"
+    ></app-page-header>
+
+    <p-divider />
+
+    <div class="create-flashcard-form">
+      <p-card class="rememo-card">
+        <form [formGroup]="createFlashcardForm" (ngSubmit)="addFlashcard()">
+          <div class="flex flex-col gap-2">
+            <label pLabel for="question">Pergunta<span class="text-red-500">*</span> </label>
+
+            <input
+              pInputText
+              id="question"
+              formControlName="question"
+              maxlength="500"
+              pSize="large"
+              placeholder="Ex.: O que é a fotossíntese?"
+              [invalid]="questionControl?.invalid && questionControl.touched"
+              aria-describedby="deck-name-help"
+            />
+
+            <small id="deck-name-help" class="text-sm input-help-text">
+              A pergunta é obrigatória e deve conter até 500 caracteres.
+            </small>
+          </div>
+
+          <div class="flex flex-col gap-2 mt-4">
+            <label pLabel for="answer">Resposta<span class="text-red-500">*</span> </label>
+
+            <quill-editor
+              id="answer"
+              formControlName="answer"
+              [modules]="quillModules"
+              [formats]="quillFormats"
+              [styles]="{ height: '180px' }"
+              theme="snow"
+              placeholder="Escreva a resposta do flashcard..."
+              [required]="true"
+            />
+          </div>
+
+          <div class="flex justify-end mt-7">
+            <button
+              pButton
+              type="submit"
+              size="large"
+              severity="help"
+              class="create-deck-button rememo-simple-button-primary"
+              [disabled]="createFlashcardForm.invalid"
+            >
+              <span class="material-symbols-rounded">add</span>
+              Adicionar à lista
+            </button>
+          </div>
+        </form>
+      </p-card>
+    </div>
+
+    <div class="flashcards mt-3">
+      <p-card class="rememo-card">
+        <ng-template #header>
+          <div class="card-header">
+            <h4 class="rememo-h4-title">Flashcards adicionados</h4>
+            <p-badge [value]="flashcards().length + ' card(s)'" severity="info" class="ml-2" />
+          </div>
+        </ng-template>
+        <ng-template #content>
+          @if (flashcards().length > 0) {
+            @for (item of flashcards(); track $index) {
+              <app-deck-flashcard
+                [question]="item.question"
+                [answer]="item.answer"
+                [id]="item.id"
+                (update)="updateFlashcard($event)"
+                (delete)="deleteFlashcard($event)"
+              />
+            }
+          } @else {
+            <div class="mt-4">
+              <app-page-empty-message
+                [icon]="'flash_on'"
+                [title]="'Nenhum flashcard adicionado ainda'"
+                [description]="'Adicione flashcards à lista para que eles possam ser salvos no deck.'"
+              />
+            </div>
+          }
+        </ng-template>
+        <ng-template #footer>
+          <div class="flex justify-end">
+            <button
+              pButton
+              type="button"
+              size="large"
+              severity="success"
+              class="create-deck-button rememo-simple-button-primary"
+              (click)="saveDeck()"
+              [disabled]="flashcards().length === 0"
+            >
+              <span class="material-symbols-rounded">check</span>
+              Salvar Alterações
+            </button>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  }
+</section>
