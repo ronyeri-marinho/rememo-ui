@@ -63,12 +63,16 @@
       </p-card>
     </div>
 
-    <div class="flashcards mt-3">
+    <div class="flashcards mt-3 mb-3">
       <p-card class="rememo-card">
         <ng-template #header>
           <div class="card-header">
             <h4 class="rememo-h4-title">Flashcards adicionados</h4>
-            <p-badge [value]="flashcards().length + ' card(s)'" severity="info" class="ml-2" />
+            <p-badge
+              [value]="flashcards().length + ' flashcard(s) aguardando salvamento'"
+              severity="info"
+              class="ml-2"
+            />
           </div>
         </ng-template>
         <ng-template #content>
@@ -100,11 +104,16 @@
               size="large"
               severity="success"
               class="create-deck-button rememo-simple-button-primary"
-              (click)="saveDeck()"
-              [disabled]="flashcards().length === 0"
+              (click)="saveFlashcards()"
+              [disabled]="flashcards().length === 0 || isCreatingFlashcards()"
             >
-              <span class="material-symbols-rounded">check</span>
-              Salvar Alterações
+              @if (isCreatingFlashcards()) {
+                <p-progress-spinner [style]="{ width: '24px', height: '24px' }" />
+                Salvando alterações. Aguarde...
+              } @else {
+                <span class="material-symbols-rounded">check</span>
+                Salvar Alterações
+              }
             </button>
           </div>
         </ng-template>

@@ -9,12 +9,13 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { InputTextModule } from 'primeng/inputtext';
 import { LabelModule } from 'primeng/label';
 import { QuillModule } from 'ngx-quill';
-import { CreateDeckFlashcardModel } from '../../../../models/deck/create-deck-flashcard.model';
 import { ButtonModule } from 'primeng/button';
 import { Card } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
 import { DeckFlashcard } from '../deck-flashcard/deck-flashcard';
 import { PageEmptyMessage } from '../../../../shared/components/page-empty-message/page-empty-message';
+import { CreateFlashcardModel } from '../../../../models/flashcard/create-flashcard.model';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @Component({
   imports: [
@@ -30,6 +31,7 @@ import { PageEmptyMessage } from '../../../../shared/components/page-empty-messa
     BadgeModule,
     DeckFlashcard,
     PageEmptyMessage,
+    ProgressSpinnerModule,
   ],
   selector: 'app-create-deck-flashcard',
   styleUrl: './create-deck-flashcard.css',
@@ -40,7 +42,8 @@ export class CreateDeckFlashcard implements OnInit {
   private deckId!: string;
   public deck = signal<Deck>({} as Deck);
   public isLoadingDeck = signal<boolean>(false);
-  public flashcards = signal<CreateDeckFlashcardModel[]>([]);
+  public isCreatingFlashcards = signal<boolean>(false);
+  public flashcards = signal<CreateFlashcardModel[]>([]);
 
   constructor(
     private route: ActivatedRoute,
@@ -85,8 +88,8 @@ export class CreateDeckFlashcard implements OnInit {
 
   public addFlashcard() {
     if (this.createFlashcardForm.valid) {
-      const flashcard: CreateDeckFlashcardModel = this.createFlashcardForm
-        .value as CreateDeckFlashcardModel;
+      const flashcard: CreateFlashcardModel = this.createFlashcardForm
+        .value as CreateFlashcardModel;
 
       flashcard.id = crypto.randomUUID();
       this.flashcards.update((currentFlashcards) => [...currentFlashcards, flashcard]);
@@ -109,7 +112,41 @@ export class CreateDeckFlashcard implements OnInit {
     this.flashcards.update((cards) => cards.filter((card) => card.id !== id));
   }
 
-  public saveDeck() {}
+  public saveFlashcards() {
+    this.isCreatingFlashcards.set(true);
+    this.deckRestApiService
+      .createFlashcardsInBatch(this.deckId, { flashcards: this.flashcards() })
+      .subscribe({
+        next: () => {
+          this.showSuccess();
+          this.router.navigate(['/decks/', this.deckId]);
+          this.isCreatingFlashcards.set(false);
+        },
+        error: (error) => {
+          console.error('Erro ao criar flashcards:', error);
+          this.showError();
+          this.isCreatingFlashcards.set(false);
+        },
+      });
+  }
+
+  showSuccess() {
+    this._messageService.add({
+      severity: 'success',
+      summary: 'Criação de Flashcards',
+      detail: 'Seus flashcards foram criados com sucesso!',
+      life: 5000,
+    });
+  }
+
+  showError() {
+    this._messageService.add({
+      severity: 'error',
+      summary: 'Erro ao criar flashcards',
+      detail: 'Não foi possível criar os flashcards. Por favor, tente novamente.',
+      life: 5000,
+    });
+  }
 
   private showGetDeckToastError() {
     this._messageService.add({

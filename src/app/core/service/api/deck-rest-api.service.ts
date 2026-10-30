@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { CreateDeckModel } from '../../../models/deck/create-deck.model';
 import { PageResponse } from '../../../models/pagination/page-response.model';
 import { Deck } from '../../../models/deck/deck.model';
+import { CreateFlashcardsInBatchModel } from '../../../models/flashcard/create-flashcards-in-batch.model';
 
 @Injectable({
   providedIn: 'root',
@@ -30,5 +31,9 @@ export class DeckRestApiService {
 
   createDeck(body: CreateDeckModel): Observable<void> {
     return this.httpClient.post<void>(`${this.baseUrl}`, body);
+  }
+
+  createFlashcardsInBatch(deckId: string, body: CreateFlashcardsInBatchModel): Observable<void> {
+    return this.httpClient.post<void>(`${this.baseUrl}/${deckId}/flashcards`, body);
   }
 }
